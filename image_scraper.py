@@ -100,7 +100,8 @@ def download_images(url, save_dir):
                 img = Image.open(img_data)
 
                 # Сохраняем изображение
-                img_filename = f"image_{i+1}.{img.format.lower() or 'jpg'}"
+                img_format = img.format.lower() if img.format else 'jpg'
+                img_filename = f"image_{i+1}.{img_format}"
                 img_save_path = os.path.join(page_save_dir, img_filename)
                 with open(img_save_path, 'wb') as f:
                     f.write(img_response.content)
